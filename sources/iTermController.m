@@ -178,8 +178,7 @@ static iTermController* shared;
     const BOOL sessionsWillRestore = ([iTermAdvancedSettingsModel runJobsInServers] &&
                                       [iTermAdvancedSettingsModel restoreWindowContents] &&
                                       self.willRestoreWindowsAtNextLaunch);
-    iTermApplicationDelegate *itad =
-        (iTermApplicationDelegate *)[[iTermApplication sharedApplication] delegate];
+    iTermApplicationDelegate *itad = iTermApplication.sharedApplication.delegate;
     return (sessionsWillRestore &&
             (itad.sparkleRestarting || ![iTermAdvancedSettingsModel killJobsInServersOnQuit]));
 }
