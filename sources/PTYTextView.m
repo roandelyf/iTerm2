@@ -1333,7 +1333,7 @@ static const int kDragThreshold = 3;
 
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        iTermApplicationDelegate *appDelegate = (iTermApplicationDelegate *)[[NSApplication sharedApplication] delegate];
+        iTermApplicationDelegate *appDelegate = iTermApplication.sharedApplication.delegate;
         [appDelegate userDidInteractWithASession];
     });
 
@@ -5376,8 +5376,7 @@ static double EuclideanDistance(NSPoint p1, NSPoint p2) {
 }
 
 - (void)useBackgroundIndicatorChanged:(NSNotification *)notification {
-    _showStripesWhenBroadcastingInput =
-            [(iTermApplicationDelegate *)[[NSApplication sharedApplication] delegate] useBackgroundPatternIndicator];
+    _showStripesWhenBroadcastingInput = iTermApplication.sharedApplication.delegate.useBackgroundPatternIndicator;
     [self setNeedsDisplay:YES];
 }
 
